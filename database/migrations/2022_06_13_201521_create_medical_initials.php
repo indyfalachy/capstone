@@ -15,6 +15,21 @@ class CreateMedicalInitials extends Migration
     {
         Schema::create('medical_initials', function (Blueprint $table) {
             $table->id();
+            $table->text('main_complaint');
+            $table->text('medical_history_now');
+            $table->text('medical_history-past');
+            $table->text('condotion');
+            $table->text('awarnes');
+            $table->text('gcs');
+            $table->text('sick_state');
+            $table->text('nutritional_status');
+            $table->string('blood_pressure');
+            $table->integer('pulse');
+            $table->double('temperature');
+            $table->integer('weight');
+            $table->integer('height');
+            $table->text('addition_note');
+
             $table->timestamps();
         });
     }

@@ -33,20 +33,26 @@
                         </div>
                     </li>
                     <li class="sidebar-list">
-                        <label class="badge badge-success">2</label>
+                        <!--label class="badge badge-success">2</label-->
                         <a class="sidebar-link sidebar-title" href="#">
                             <i data-feather="home"></i><span>Dashboard</span>
                         </a>
                         <ul class="sidebar-submenu">
-                            <li><a href="#">Default</a></li>
+                            <li><a href="#">Staff And User</a></li>
+                            <li><a href="#">Unit Layanan</a></li>
                             <li><a href="#">Ecommerce</a></li>
                         </ul>
                     </li>
-
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="#">
-                            <i data-feather="git-pull-request"></i><span>File manager</span>
+                        <!--label class="badge badge-success">2</label-->
+                        <a class="sidebar-link sidebar-title" href="#">
+                            <i data-feather="clipboard"></i><span>Rekam Medis</span>
                         </a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="#">Rekap Pasien</a></li>
+                            <li><a href="#">Form Rekam Medis</a></li>
+                            <li><a href="#">Riwayat Rekam Medis</a></li>
+                        </ul>
                     </li>
 
                 </ul>

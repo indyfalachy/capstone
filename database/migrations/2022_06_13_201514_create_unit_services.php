@@ -15,6 +15,8 @@ class CreateUnitServices extends Migration
     {
         Schema::create('unit_services', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+
             $table->timestamps();
         });
     }
