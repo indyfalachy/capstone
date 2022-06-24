@@ -6,9 +6,9 @@
         <div class="container-fluid">
             <a href="{{route('admin.user.create')}}" class="btn btn-primary mb-3">Buat Data User</a>
             <div class="card">
-                <div class="card-body">
-
-                </div>
+                <d     <livewire:table.main name="user" :model="$user"/>
+                iv class="card-body">
+                 </div>
             </div>
         </div>
     </div>

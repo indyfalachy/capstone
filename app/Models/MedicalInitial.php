@@ -36,7 +36,7 @@ class MedicalInitial extends Model
     /**
      * @var array
      */
-    protected $fillable = ['main_complaint', 'medical_history_now', 'medical_history-past', 'condotion', 'awarnes', 'gcs', 'sick_state', 'nutritional_status', 'blood_pressure', 'pulse', 'temperature', 'weight', 'height', 'addition_note', 'created_at', 'updated_at'];
+    protected $fillable = ['main_complaint', 'medical_history_now', 'medical_history_past', 'condition', 'awarnes', 'gcs', 'sick_state', 'nutritional_status', 'blood_pressure', 'pulse', 'temperature', 'weight', 'height', 'addition_note', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -45,4 +45,13 @@ class MedicalInitial extends Model
     {
         return $this->hasOne('App\Models\PatientQueue');
     }
+
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('main_complaint','like', '%'.$query.'%')
+                ->orWhere('condition', 'like', '%'.$query.'%')
+                ->orWhere('awarnes', 'like', '%'.$query.'%');
+    }
+
 }

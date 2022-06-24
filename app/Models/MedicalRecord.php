@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * @property integer $id
@@ -25,7 +26,7 @@ class MedicalRecord extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -36,7 +37,7 @@ class MedicalRecord extends Model
     protected $fillable = ['user_id', 'pasien_id', 'unit_service_id', 'file_location', 'soap', 'action', 'type', 'refer', 'file_addition', 'created_at', 'updated_at'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function pasien()
     {
@@ -44,7 +45,7 @@ class MedicalRecord extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function user()
     {
@@ -52,10 +53,29 @@ class MedicalRecord extends Model
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return BelongsTo
      */
     public function unitService()
     {
         return $this->belongsTo('App\Models\UnitService');
     }
+
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('user_id', 'like', '%' . $query . '%')
+                ->orWhereHas('unitService', function ($q2) use ($query) {
+                    $q2->where('title', 'like', '%' . $query . '%');
+                })->orWhereHas('user', function ($q2) use ($query) {
+                    $q2->where('name', 'like', '%' . $query . '%');
+                })->orWhereHas('pasien', function ($q2) use ($query) {
+                    $q2->where('name', 'like', '%' . $query . '%')
+                        ->orWhere('nik', 'like', '%' . $query . '%')
+                        ->orWhere('address', 'like', '%' . $query . '%')
+                        ->orWhere('gender', 'like', '%' . $query . '%')
+                        ->orWhere('no_bpjs', 'like', '%' . $query . '%');
+                });
+    }
+
+
 }

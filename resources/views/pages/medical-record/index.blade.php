@@ -7,7 +7,7 @@
             <a href="{{route('admin.medical-record.create')}}" class="btn btn-primary mb-3">Data Rekam Medis</a>
             <div class="card">
                 <div class="card-body">
-
+                    <livewire:table.main name="medical-record" :model="$medicalRecord"/>
                 </div>
             </div>
         </div>

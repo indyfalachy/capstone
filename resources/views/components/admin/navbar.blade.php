@@ -25,29 +25,19 @@
             <li class="maximize"><a class="text-dark" href="#" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
             <li class="profile-nav onhover-dropdown p-0 me-0">
                 <div class="media profile-media">
-{{--                    <img class="b-r-10" src="{{asset('assets/images/dashboard/profile.jpg')}}" alt="">--}}
+
+                    {{--                    <img class="b-r-10" src="{{asset('assets/images/dashboard/profile.jpg')}}" alt="">--}}
                     <img src="{{ auth()->user()->profile_photo_url }}" alt="{{ auth()->user()->name }}" class="b-r-10 rounded-full object-cover round" style="height: 40px;width: 40px; border-radius: 100px !important;">
 {{--                    <img src="{{ $this->user->profile_photo_url }}" alt="{{ $this->user->name }}" class="rounded-full h-20 w-20 object-cover">--}}
                     <div class="media-body"><span>{{ auth()->user()->name }}</span>
                         <p class="mb-0 font-roboto"> Selamat datang <i class="middle fa fa-angle-down"></i></p>
                     </div>
                 </div>
-                <ul class="profile-dropdown onhover-show-div">
-                    <li><a href="#"><i data-feather="user"></i><span>Account </span></a></li>
-                    <li><a href="#"><i data-feather="mail"></i><span>Inbox</span></a></li>
-                    <li><a href="#"><i data-feather="file-text"></i><span>Taskboard</span></a></li>
-                    <li><a href="#"><i data-feather="settings"></i><span>Settings</span></a></li>
 
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}" style="margin: 0;padding: 0;">
-                            @csrf
-                            <button style="border: none; background: none;width: 100%; text-align: start"><i data-feather="log-in"></i><span>Log Out</span></button>
-                        </form>
-                    </li>
-                </ul>
             </li>
         </ul>
     </div>
+
     <script class="result-template" type="text/x-handlebars-template">
         <div class="ProfileCard u-cf">
             <div class="ProfileCard-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay m-0"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg></div>

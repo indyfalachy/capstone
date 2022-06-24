@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <livewire:form.medical-initial action="create"/>
+                    <livewire:form.queue action="create"/>
                 </div>
             </div>
         </div>

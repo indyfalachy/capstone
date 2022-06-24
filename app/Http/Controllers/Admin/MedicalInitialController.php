@@ -3,22 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\MedicalInitial;
 use Illuminate\Http\Request;
 
 class MedicalInitialController extends Controller
 {
     public function index()
     {
-        dd("indie anak baik");// buat table
+        $medicalInitial=MedicalInitial::class;
+        return view('pages.medical-initial.index',compact('medicalInitial'));
     }
 
     public function create()
     {
-        dd("Capstone project");
+
+        return view('pages.medical-initial.create');
     }
 
     public function edit($id)
     {
-        dd("uji coba ke $id");
+        return view('pages.medical-initial.edit');
     }
 }

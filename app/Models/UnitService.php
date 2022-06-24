@@ -16,7 +16,7 @@ class UnitService extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -40,5 +40,11 @@ class UnitService extends Model
     public function patientQueues()
     {
         return $this->hasMany('App\Models\PatientQueue');
+    }
+
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('title', 'like', '%'.$query.'%');
     }
 }

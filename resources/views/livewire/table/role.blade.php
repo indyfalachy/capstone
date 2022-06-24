@@ -17,12 +17,11 @@
                 <td>{{ $role->title }}</td>
                 <td>Rp. {{ number_format($role->price) }}</td>
                 <td>{{ $role->slug }}</td>
-                <td>{{ $role->userOwnRoles->count() }}</td>
                 <td>
-                    <a role="button" href="{{ route('admin.role.edit',[$role->room->slug,$role->id]) }}" class="mr-3">
-                        <i class="fa fa-16px fa-pen">Ubah</i></a>
-                    <a role="button" href="{{ route('admin.role.show',[$role->room->slug,$role->slug]) }}" class="mr-3">
-                        <i class="fa fa-16px fa-eye">Lihat</i></a>
+{{--                    <a role="button" href="{{ route('admin.role.edit',[$role->room->slug,$role->id]) }}" class="mr-3">--}}
+{{--                        <i class="fa fa-16px fa-pen">Ubah</i></a>--}}
+{{--                    <a role="button" href="{{ route('admin.role.show',[$role->room->slug,$role->slug]) }}" class="mr-3">--}}
+{{--                        <i class="fa fa-16px fa-eye">Lihat</i></a>--}}
                     {{--                    <a role="button" href="{{ route('admin.course.index',$course->slug) }}" class="mr-3">--}}
                     {{--                        <i class="fa fa-16px fa-book">Bimbel</i></a>--}}
                 </td>

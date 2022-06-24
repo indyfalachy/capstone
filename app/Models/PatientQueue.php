@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,9 +13,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $status
  * @property string $created_at
  * @property string $updated_at
+ * @property int $queue
+ * @property UnitService $unitService
  * @property Pasien $pasien
  * @property MedicalInitial $medicalInitial
- * @property UnitService $unitService
  */
 class PatientQueue extends Model
 {
@@ -28,7 +30,15 @@ class PatientQueue extends Model
     /**
      * @var array
      */
-    protected $fillable = ['queue','pasien_id', 'unit_service_id', 'medical_initial_id', 'status', 'created_at', 'updated_at'];
+    protected $fillable = ['pasien_id', 'unit_service_id', 'medical_initial_id', 'status', 'created_at', 'updated_at', 'queue'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function unitService()
+    {
+        return $this->belongsTo('App\Models\UnitService');
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -45,12 +55,8 @@ class PatientQueue extends Model
     {
         return $this->belongsTo('App\Models\MedicalInitial');
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function unitService()
-    {
-        return $this->belongsTo('App\Models\UnitService');
+    public static function getQueue($unit){
+        $q=PatientQueue::where('unit_service_id',$unit)->whereDate('created_at','=',Carbon::now()->toDateString())->get()->count();
+        return $q+1;
     }
 }

@@ -27,7 +27,7 @@ class Pasien extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
-     * 
+     *
      * @var string
      */
     protected $keyType = 'integer';
@@ -51,5 +51,16 @@ class Pasien extends Model
     public function patientQueues()
     {
         return $this->hasMany('App\Models\PatientQueue');
+    }
+
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('name', 'like', '%'.$query.'%')
+                ->orWhere('nik', 'like', '%'.$query.'%')
+                ->orWhere('address', 'like', '%'.$query.'%')
+                ->orWhere('village', 'like', '%'.$query.'%')
+                ->orWhere('no_bpjs', 'like', '%'.$query.'%')
+                ->orWhere('gender', 'like', '%'.$query.'%');
     }
 }
