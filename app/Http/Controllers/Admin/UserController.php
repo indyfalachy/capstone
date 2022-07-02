@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $user=user::class;
+        $user=User::class;
         return view('pages.user.index',compact('user'));
     }
 
@@ -21,6 +21,6 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        return view('pages.user.create');
+        return view('pages.user.edit');
     }
 }

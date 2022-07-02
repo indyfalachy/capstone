@@ -12,6 +12,7 @@
     <x-form.input model="data.temperature" title="Suhu" type="double"/>
     <x-form.input model="data.weight" title="Berat Badan" type="number"/>
     <x-form.input model="data.height" title="Tinggi Badan" type="number"/>
+    <x-form.input model="data.addition_note" title="Catatan Tambahan" type="text"/>
 
     <div class="list-group">
         <a href="#" class="list-group-item active">Soap</a>

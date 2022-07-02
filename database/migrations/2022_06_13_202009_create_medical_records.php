@@ -16,13 +16,16 @@ class CreateMedicalRecords extends Migration
         Schema::create('medical_records', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('pasien_id');
+            $table->unsignedBigInteger('patient_id');
             $table->string('file_location');
             $table->unsignedBigInteger('unit_service_id');
-            $table->text('soap');
-            $table->text('action');
-            $table->string('type');
-            $table->integer('refer');
+            $table->text('Subjective')->nullable();
+            $table->text('Objective')->nullable();
+            $table->text('Assessment')->nullable();
+            $table->text('plan')->nullable();
+            $table->text('action')->nullable();
+            $table->string('type')->nullable();
+            $table->unsignedBigInteger('refer')->nullable();
             $table->string('file_addition');
 
             $table->foreign('user_id')
@@ -31,13 +34,19 @@ class CreateMedicalRecords extends Migration
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
-            $table->foreign('pasien_id')
+            $table->foreign('patient_id')
                 ->references('id')
-                ->on('pasiens')
+                ->on('patients')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 
             $table->foreign('unit_service_id')
+                ->references('id')
+                ->on('unit_services')
+                ->cascadeOnDelete()
+                ->cascadeOnUpdate();
+
+            $table->foreign('refer')
                 ->references('id')
                 ->on('unit_services')
                 ->cascadeOnDelete()

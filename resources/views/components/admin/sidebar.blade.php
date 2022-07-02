@@ -39,25 +39,26 @@
                         </a>
 
                     </li>
-{{--                    <li class="">--}}
-{{--                        <!--label class="badge badge-success">2</label-->--}}
-{{--                        <a class="sidebar-link sidebar-title" href="#">--}}
-{{--                            <i data-feather="monitor"></i><span>Unit Layanan</span>--}}
-{{--                        </a>--}}
-{{--                        <ul class="sidebar-submenu">--}}
-{{--                            <li><a href="{{ route('admin.pasien.create') }}">Poli Umum</a></li>--}}
-{{--                            <li><a href="{{ route('admin.pasien.create') }}">Rawat Inap</a></li>--}}
-{{--                            <li><a href="#">Persalinan</a></li>--}}
-{{--                            <li><a href="#">Poli Gigi</a></li>--}}
-{{--                            <li><a href="#">Poli KIA dan KB</a></li>--}}
-{{--                            <li><a href="#">Poli Gizi</a></li>--}}
-{{--                            <li><a href="#">Poli imunisasi</a></li>--}}
-{{--                            <li><a href="#">Poli TB dan HIV</a></li>--}}
-{{--                            <li><a href="#">Laboratorium</a></li>--}}
-{{--                            <li><a href="#">Posbindu dan PTM</a></li>--}}
-{{--                        </ul>--}}
+                    <li class="">
+                        <!--label class="badge badge-success">2</label-->
+                        <a class="sidebar-link sidebar-title" href="#">
+                            <i data-feather="monitor"></i><span>Unit Layanan</span>
+                        </a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="{{ route('admin.pasien.create') }}">Poli Umum</a></li>
+                            <li><a href="{{ route('admin.pasien.create') }}">Rawat Inap</a></li>
+                            <li><a href="#">Persalinan</a></li>
+                            <li><a href="#">Poli Gigi</a></li>
+                            <li><a href="#">Poli KIA dan KB</a></li>
+                            <li><a href="#">Poli Gizi</a></li>
+                            <li><a href="#">Poli imunisasi</a></li>
+                            <li><a href="#">Poli TB dan HIV</a></li>
+                            <li><a href="#">Laboratorium</a></li>
+                            <li><a href="#">Posbindu dan PTM</a></li>
+                            <li><a href="#">APOTEK</a></li>
+                        </ul>
 
-{{--                    </li>--}}
+                    </li>
 
                     <li class="sidebar-list">
                         <!--label class="badge badge-success">2</label-->
@@ -72,8 +73,15 @@
                     </li>
                     <li class="">
                         <!--label class="badge badge-success">2</label-->
-                        <a class="sidebar-link sidebar-title" href="#">
+                        <a class="sidebar-link sidebar-title" href="{{ route('admin.user.index') }}">
                             <i data-feather="user"></i><span>Dokter & Staff</span>
+                        </a>
+
+                    </li>
+                    <li class="">
+                        <!--label class="badge badge-success">2</label-->
+                        <a class="sidebar-link sidebar-title" href="{{ route('admin.medical-record.index') }}">
+                            <i data-feather="user"></i><span>Apotek</span>
                         </a>
 
                     </li>

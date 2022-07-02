@@ -17,7 +17,7 @@ class Pasien extends Component
             $this->data = [
                 'name'=>$data->name,
                 'nik'=>$data->nik,
-                'address'=>$data-a,
+                'address'=>$data->address,
                 'birth_place'=>$data->birth_place,
                 'birth_date'=>$data->birth_date,
                 'village'=>$data->village,

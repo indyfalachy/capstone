@@ -9,9 +9,12 @@ class MedicalRecord extends Component
     public $action;
     public $data;
     public $dataId;
+    public $pasien;
 
     public function mount()
     {
+        $this->data['pasien_id']=0;
+        $this->searchPatient(null);
         if ($this->dataId != null) {
             $data = \App\Models\MedicalRecord::find($this->dataId);
             $this->data = [
@@ -29,9 +32,25 @@ class MedicalRecord extends Component
             ];
         }
     }
+    public $optionPatient;
+    public function searchPatient(){
+        $this->optionPatient = eloquent_to_options(\App\Models\Pasien::search($this->pasien), 'id', 'name');
+//        $this->queue = [
+//            'pasien_id' => $this->optionPatient[0]['value'],
+//            'unit_service_id' => $this->optionUnit[0]['value'],
+//        ];
+    }
 
     public function render()
     {
+
+        $this->optionPatient = eloquent_to_options(\App\Models\Pasien::search($this->pasien)->get(), 'id', 'name');
+        if ($this->optionPatient!=null){
+            $this->data = [
+                'pasien_id' => $this->optionPatient[0]['value'],
+            ];
+        }
+
         return view('livewire.form.medical-record');
     }
 }

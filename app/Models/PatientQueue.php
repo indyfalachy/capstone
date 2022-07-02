@@ -30,7 +30,7 @@ class PatientQueue extends Model
     /**
      * @var array
      */
-    protected $fillable = ['pasien_id', 'unit_service_id', 'medical_initial_id', 'status', 'created_at', 'updated_at', 'queue'];
+    protected $fillable = ['pasien_id', 'unit_service_id', 'medical_initial_id', 'status', 'created_at', 'updated_at', ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -55,7 +55,8 @@ class PatientQueue extends Model
     {
         return $this->belongsTo('App\Models\MedicalInitial');
     }
-    public static function getQueue($unit){
+    public static function getQueue($unit)
+    {
         $q=PatientQueue::where('unit_service_id',$unit)->whereDate('created_at','=',Carbon::now()->toDateString())->get()->count();
         return $q+1;
     }

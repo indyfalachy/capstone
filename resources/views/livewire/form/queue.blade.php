@@ -29,5 +29,5 @@
         <x-form.input model="data.height" title="Tinggi Badan" type="number"/>
     </div>
     <x-form.textarea model="data.addition_note" title="Catatan Tambahan" type="text"/>
-    <input class="btn btn-primary" type="submit" value="Tambah antrian">
+    <input class="btn btn-primary" type="submit" value="Kirim">
 </form>

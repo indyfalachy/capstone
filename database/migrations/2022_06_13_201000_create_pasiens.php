@@ -13,23 +13,21 @@ class CreatePasiens extends Migration
      */
     public function up()
     {
-        Schema::create('pasiens', function (Blueprint $table) {
+        Schema::create('patients', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('nik');
-            $table->text('address');
-            $table->text('birth_place');
-            $table->date('birth_date');
-            $table->string('village');
-            $table->string('district');
-            $table->string('gender');
-            $table->string('religion');
-            $table->string('job');
-            $table->string('no_bpjs');
-            $table->string('allergy');
-
-
-
+            $table->text('address')->nullable();
+            $table->text('birth_place')->nullable();
+            $table->date('birth_date')->nullable();
+            $table->string('village')->nullable();
+            $table->string('district')->nullable();
+            $table->string('gender')->nullable();
+            $table->string('religion')->nullable();
+            $table->string('job')->nullable();
+            $table->integer('bpjs_status')->default(1);
+            $table->string('no_bpjs')->nullable();
+            $table->string('allergy')->nullable();
             $table->timestamps();
         });
     }
@@ -41,6 +39,6 @@ class CreatePasiens extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pasiens');
+        Schema::dropIfExists('patients');
     }
 }

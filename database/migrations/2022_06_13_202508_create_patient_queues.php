@@ -15,14 +15,14 @@ class CreatePatientQueues extends Migration
     {
         Schema::create('patient_queues', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('pasien_id');
+            $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('unit_service_id');
             $table->unsignedBigInteger('medical_initial_id');
-            $table->string('status');
+            $table->integer('status');
 
-            $table->foreign('pasien_id')
+            $table->foreign('unit_service_id')
                 ->references('id')
-                ->on('pasiens')
+                ->on('patients')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
 

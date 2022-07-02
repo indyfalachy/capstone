@@ -34,6 +34,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('vendor/select2/select2.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/summernote.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/date-picker.css')}}">
+
+    <link rel="stylesheet" href="{{ asset('vendor/odontogram/jquery.odontogram.min.css') }}">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/bootstrap.css')}}">
@@ -112,7 +114,9 @@
 </div>
 <!-- latest jquery-->
 {{--<script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>--}}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+{{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" charset="utf-8"></script>
 <!-- Bootstrap js-->
 <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
@@ -146,6 +150,360 @@
 <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.js') }}"></script>
 <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
 <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+
+
+<script src="{{ asset('vendor/odontogram/jquery.odontogram.js') }}" charset="utf-8"></script>
+<script type="text/javascript">
+    var data = [
+        {
+            "title": "Kosongkan",
+            "type": "clean",
+            "all": false,
+            "menu": true
+        }, {"type": "separator", "menu": false}, {
+            "index": "1",
+            "title": "Gigi Hilang",
+            "type": "section",
+            "figure": {"background": "#FF0000"},
+            "menu": false
+        }, {
+            "index": "2",
+            "title": "Gigi Belum Sepurna",
+            "type": "unit",
+            "figure": {"background": "url('..\/img\/triangle-red.svg')"},
+            "menu": true
+        }, {
+            "index": "3",
+            "title": "Gigi Hilangaaa",
+            "type": "unit",
+            "figure": {"background": "url('..\/img\/asteric-red.svg')"},
+            "menu": true
+        }, {
+            "index": "4",
+            "title": "Sellante Realizado",
+            "type": "unit",
+            "figure": {"background": "url('..\/img\/asteric-blue.svg')"},
+            "menu": true
+        }, {
+            "index": "5",
+            "title": "Extraccin Indicada",
+            "type": "unit",
+            "figure": {"background": "url('..\/img\/x-red.svg')"},
+            "menu": true
+        }, {
+            "index": "6",
+            "title": "Perdida por Caries",
+            "type": "unit",
+            "figure": {"background": "url('..\/img\/x-blue.svg')"},
+            "menu": true
+        }, {
+            "index": "7",
+            "title": "Perdida (otra causa)",
+            "type": "unit",
+            "figure": {"background": "url('..\/img\/x-circle-red.svg')"},
+            "menu": true
+        }, {
+            "index": "8",
+            "title": "Endodoncia",
+            "type": "unit",
+            "figure": {"background": "url('..\/img\/triangle-red.svg')"},
+            "menu": true
+        }, {
+            "index": "9",
+            "title": "Corona",
+            "type": "unit",
+            "figure": {"background": "url('..\/img\/square-3-red.svg')"},
+            "menu": true
+        }];
+
+    var json = {
+        "52": {"unit": "5", "up": null, "down": null, "right": null, "left": null, "center": null},
+        "51": {"center": null, "down": null, "right": null, "unit": "5", "up": null, "left": null},
+        "43": {
+            "unit": "4",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": null,
+            "recession": null
+        },
+        "42": {
+            "unit": null,
+            "up": null,
+            "down": "2",
+            "right": null,
+            "left": "1",
+            "center": "2",
+            "mobility": null,
+            "recession": null
+        },
+        "12": {
+            "unit": "4",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "recession": "3",
+            "mobility": null
+        },
+        "41": {
+            "unit": "5",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": "2",
+            "recession": "3"
+        },
+        "11": {
+            "unit": "6",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "recession": "2",
+            "mobility": "2"
+        },
+        "31": {
+            "unit": null,
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": null,
+            "recession": null
+        },
+        "32": {
+            "center": null,
+            "right": null,
+            "unit": "3",
+            "up": null,
+            "down": null,
+            "left": null,
+            "mobility": "3",
+            "recession": null
+        },
+        "45": {
+            "unit": "8",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": null,
+            "recession": null
+        },
+        "34": {
+            "unit": "6",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": null,
+            "recession": null
+        },
+        "36": {
+            "unit": "3",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": null,
+            "recession": null
+        },
+        "38": {
+            "unit": "8",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": null,
+            "recession": null
+        },
+        "35": {
+            "center": "1",
+            "right": "1",
+            "down": null,
+            "unit": null,
+            "up": "1",
+            "left": null,
+            "mobility": null,
+            "recession": "3"
+        },
+        "62": {"center": null, "down": "2", "right": "1", "left": "1", "up": "1"},
+        "16": {"up": "1", "right": "1", "down": "1", "left": "1", "center": "1"},
+        "25": {
+            "recession": null,
+            "mobility": null,
+            "unit": "4",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null
+        },
+        "63": {"center": "1", "up": "1", "down": "1", "left": "1", "right": "1"},
+        "13": {
+            "recession": "1",
+            "mobility": "3",
+            "unit": "5",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null
+        },
+        "18": {
+            "up": "1",
+            "center": "1",
+            "down": "1",
+            "recession": null,
+            "mobility": null,
+            "unit": null,
+            "right": null,
+            "left": null
+        },
+        "17": {
+            "recession": null,
+            "mobility": null,
+            "unit": null,
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null
+        },
+        "44": {
+            "center": null,
+            "up": null,
+            "unit": "7",
+            "down": null,
+            "right": null,
+            "left": null,
+            "mobility": null,
+            "recession": null
+        },
+        "28": {"center": "1", "down": "1"},
+        "21": {
+            "right": null,
+            "up": null,
+            "center": null,
+            "recession": null,
+            "mobility": null,
+            "unit": "5",
+            "down": null,
+            "left": null
+        },
+        "22": {
+            "recession": null,
+            "mobility": null,
+            "unit": null,
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null
+        },
+        "64": {"unit": "4", "up": null, "down": null, "right": null, "left": null, "center": null},
+        "24": {
+            "right": "1",
+            "down": "1",
+            "center": "1",
+            "up": "1",
+            "recession": "2",
+            "mobility": null,
+            "unit": null,
+            "left": null
+        },
+        "74": {"down": null, "center": null, "up": null, "unit": "6", "right": null, "left": null},
+        "75": {"right": null, "left": null, "center": null, "up": null, "down": null, "unit": "8"},
+        "14": {
+            "recession": null,
+            "mobility": "3",
+            "unit": "8",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null
+        },
+        "27": {
+            "recession": null,
+            "mobility": null,
+            "unit": "6",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null
+        },
+        "81": {"center": null},
+        "47": {
+            "unit": "5",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": null,
+            "recession": null
+        },
+        "37": {
+            "unit": "5",
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null,
+            "mobility": null,
+            "recession": null
+        },
+        "71": {"center": null, "down": null, "right": null, "unit": "3", "up": null, "left": null},
+        "55": {"unit": null, "up": null, "down": null, "right": null, "left": null, "center": null},
+        "33": {
+            "center": "1",
+            "down": "1",
+            "unit": null,
+            "up": null,
+            "right": null,
+            "left": null,
+            "mobility": "2",
+            "recession": null
+        },
+        "23": {
+            "recession": null,
+            "mobility": "2",
+            "unit": null,
+            "up": null,
+            "down": null,
+            "right": null,
+            "left": null,
+            "center": null
+        },
+        "85": {"unit": "5", "up": null, "down": null, "right": null, "left": null, "center": null},
+        "84": {"up": "1"}
+    };
+
+    $odontogram = $('.odontogram').odontogram({
+        'format': 'iconTitle,recession,mobility,unit',
+        'json': json,
+        'data': data,
+        'menu-title': 'Pieza #%dataItem%',
+        'enable': true,
+        'icons_dir': '../img/',
+    });
+    console.log($('.odontogram').odontogram.getValue("58"))
+
+</script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="{{asset('assets/js/script.js')}}"></script>
