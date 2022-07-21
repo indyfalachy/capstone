@@ -67,8 +67,8 @@
                         </a>
                         <ul class="sidebar-submenu">
                             <li><a href="{{ route('admin.pasien.index') }}">Rekap Pasien</a></li>
-                            <li><a href="{{ route('admin.medical-initial.index') }}">Form Rekam Medis</a></li>
-                            <li><a href="{{ route('admin.medical-record.index') }}">Riwayat Rekam Medis</a></li>
+{{--                            <li><a href="{{ route('admin.medical-initial.index') }}">Form Rekam Medis</a></li>--}}
+{{--                            <li><a href="{{ route('admin.medical-record.index') }}">Riwayat Rekam Medis</a></li>--}}
                         </ul>
                     </li>
                     <li class="">
@@ -78,13 +78,13 @@
                         </a>
 
                     </li>
-                    <li class="">
-                        <!--label class="badge badge-success">2</label-->
-                        <a class="sidebar-link sidebar-title" href="{{ route('admin.medical-record.index') }}">
-                            <i data-feather="user"></i><span>Apotek</span>
-                        </a>
+{{--                    <li class="">--}}
+{{--                        <!--label class="badge badge-success">2</label-->--}}
+{{--                        <a class="sidebar-link sidebar-title" href="{{ route('admin.medical-record.index') }}">--}}
+{{--                            <i data-feather="user"></i><span>Apotek</span>--}}
+{{--                        </a>--}}
 
-                    </li>
+{{--                    </li>--}}
 
                 </ul>
             </div>

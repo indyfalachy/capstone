@@ -34,8 +34,8 @@
                 <td>{{ $pasien->birth_place }}</td>
                 <td>{{ $pasien->created_at }}</td>
                 <td>
-{{--                    <a role="button" href="{{ route('admin.pasien.edit',[$pasien->room->slug,$pasien->id]) }}" class="mr-3">--}}
-{{--                        <i class="fa fa-16px fa-pen">Ubah</i></a>--}}
+                    <a role="button" href="{{ route('admin.medical-record.show',$pasien->id) }}" class="mr-3">
+                        <i class="fa fa-16px fa-eye">check rekam medik</i></a>
 {{--                    <a role="button" href="{{ route('admin.pasien.show',[$pasien->room->slug,$pasien->slug]) }}" class="mr-3">--}}
 {{--                        <i class="fa fa-16px fa-eye">Lihat</i></a>--}}
                     {{--                    <a role="button" href="{{ route('admin.course.index',$course->slug) }}" class="mr-3">--}}

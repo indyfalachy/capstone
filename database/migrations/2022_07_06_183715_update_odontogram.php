@@ -14,7 +14,7 @@ class UpdateOdontogram extends Migration
     public function up()
     {
         Schema::table('medical_records', function (Blueprint $table) {
-$table->text('odontogram');
+$table->text('odontogram')->nullable();
         });
     }
 
