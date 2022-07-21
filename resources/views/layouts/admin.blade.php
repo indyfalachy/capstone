@@ -49,7 +49,19 @@
             margin: 20px 0 0;
             padding: 0;
         }
+        .og-diagram .og-item .og-menu ul.ui-menu {
+            background: #dddddd;
+            width: 240px;
+            padding: 5px;
+        }
+        .og-diagram .og-item .og-menu ul .ui-widget-header {
+            background: #aaaaaa;
+        }
     </style>
+    @isset($styles)
+        {{ $styles }}
+    @endisset
+
     @livewireStyles
 </head>
 <body onload="startTime()">
@@ -150,366 +162,118 @@
 <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.js') }}"></script>
 <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
 <script src="{{ asset('assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
-
+<script defer src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}"></script>
 
 <script src="{{ asset('vendor/odontogram/jquery.odontogram.js') }}" charset="utf-8"></script>
-<script type="text/javascript">
-    var data = [
-        {
-            "title": "Kosongkan",
-            "type": "clean",
-            "all": false,
-            "menu": true
-        }, {"type": "separator", "menu": false}, {
-            "index": "1",
-            "title": "Gigi Hilang",
-            "type": "section",
-            "figure": {"background": "#FF0000"},
-            "menu": false
-        }, {
-            "index": "2",
-            "title": "Gigi Belum Sepurna",
-            "type": "unit",
-            "figure": {"background": "url('..\/img\/triangle-red.svg')"},
-            "menu": true
-        }, {
-            "index": "3",
-            "title": "Gigi Hilangaaa",
-            "type": "unit",
-            "figure": {"background": "url('..\/img\/asteric-red.svg')"},
-            "menu": true
-        }, {
-            "index": "4",
-            "title": "Sellante Realizado",
-            "type": "unit",
-            "figure": {"background": "url('..\/img\/asteric-blue.svg')"},
-            "menu": true
-        }, {
-            "index": "5",
-            "title": "Extraccin Indicada",
-            "type": "unit",
-            "figure": {"background": "url('..\/img\/x-red.svg')"},
-            "menu": true
-        }, {
-            "index": "6",
-            "title": "Perdida por Caries",
-            "type": "unit",
-            "figure": {"background": "url('..\/img\/x-blue.svg')"},
-            "menu": true
-        }, {
-            "index": "7",
-            "title": "Perdida (otra causa)",
-            "type": "unit",
-            "figure": {"background": "url('..\/img\/x-circle-red.svg')"},
-            "menu": true
-        }, {
-            "index": "8",
-            "title": "Endodoncia",
-            "type": "unit",
-            "figure": {"background": "url('..\/img\/triangle-red.svg')"},
-            "menu": true
-        }, {
-            "index": "9",
-            "title": "Corona",
-            "type": "unit",
-            "figure": {"background": "url('..\/img\/square-3-red.svg')"},
-            "menu": true
-        }];
 
-    var json = {
-        "52": {"unit": "5", "up": null, "down": null, "right": null, "left": null, "center": null},
-        "51": {"center": null, "down": null, "right": null, "unit": "5", "up": null, "left": null},
-        "43": {
-            "unit": "4",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": null,
-            "recession": null
-        },
-        "42": {
-            "unit": null,
-            "up": null,
-            "down": "2",
-            "right": null,
-            "left": "1",
-            "center": "2",
-            "mobility": null,
-            "recession": null
-        },
-        "12": {
-            "unit": "4",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "recession": "3",
-            "mobility": null
-        },
-        "41": {
-            "unit": "5",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": "2",
-            "recession": "3"
-        },
-        "11": {
-            "unit": "6",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "recession": "2",
-            "mobility": "2"
-        },
-        "31": {
-            "unit": null,
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": null,
-            "recession": null
-        },
-        "32": {
-            "center": null,
-            "right": null,
-            "unit": "3",
-            "up": null,
-            "down": null,
-            "left": null,
-            "mobility": "3",
-            "recession": null
-        },
-        "45": {
-            "unit": "8",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": null,
-            "recession": null
-        },
-        "34": {
-            "unit": "6",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": null,
-            "recession": null
-        },
-        "36": {
-            "unit": "3",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": null,
-            "recession": null
-        },
-        "38": {
-            "unit": "8",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": null,
-            "recession": null
-        },
-        "35": {
-            "center": "1",
-            "right": "1",
-            "down": null,
-            "unit": null,
-            "up": "1",
-            "left": null,
-            "mobility": null,
-            "recession": "3"
-        },
-        "62": {"center": null, "down": "2", "right": "1", "left": "1", "up": "1"},
-        "16": {"up": "1", "right": "1", "down": "1", "left": "1", "center": "1"},
-        "25": {
-            "recession": null,
-            "mobility": null,
-            "unit": "4",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null
-        },
-        "63": {"center": "1", "up": "1", "down": "1", "left": "1", "right": "1"},
-        "13": {
-            "recession": "1",
-            "mobility": "3",
-            "unit": "5",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null
-        },
-        "18": {
-            "up": "1",
-            "center": "1",
-            "down": "1",
-            "recession": null,
-            "mobility": null,
-            "unit": null,
-            "right": null,
-            "left": null
-        },
-        "17": {
-            "recession": null,
-            "mobility": null,
-            "unit": null,
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null
-        },
-        "44": {
-            "center": null,
-            "up": null,
-            "unit": "7",
-            "down": null,
-            "right": null,
-            "left": null,
-            "mobility": null,
-            "recession": null
-        },
-        "28": {"center": "1", "down": "1"},
-        "21": {
-            "right": null,
-            "up": null,
-            "center": null,
-            "recession": null,
-            "mobility": null,
-            "unit": "5",
-            "down": null,
-            "left": null
-        },
-        "22": {
-            "recession": null,
-            "mobility": null,
-            "unit": null,
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null
-        },
-        "64": {"unit": "4", "up": null, "down": null, "right": null, "left": null, "center": null},
-        "24": {
-            "right": "1",
-            "down": "1",
-            "center": "1",
-            "up": "1",
-            "recession": "2",
-            "mobility": null,
-            "unit": null,
-            "left": null
-        },
-        "74": {"down": null, "center": null, "up": null, "unit": "6", "right": null, "left": null},
-        "75": {"right": null, "left": null, "center": null, "up": null, "down": null, "unit": "8"},
-        "14": {
-            "recession": null,
-            "mobility": "3",
-            "unit": "8",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null
-        },
-        "27": {
-            "recession": null,
-            "mobility": null,
-            "unit": "6",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null
-        },
-        "81": {"center": null},
-        "47": {
-            "unit": "5",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": null,
-            "recession": null
-        },
-        "37": {
-            "unit": "5",
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null,
-            "mobility": null,
-            "recession": null
-        },
-        "71": {"center": null, "down": null, "right": null, "unit": "3", "up": null, "left": null},
-        "55": {"unit": null, "up": null, "down": null, "right": null, "left": null, "center": null},
-        "33": {
-            "center": "1",
-            "down": "1",
-            "unit": null,
-            "up": null,
-            "right": null,
-            "left": null,
-            "mobility": "2",
-            "recession": null
-        },
-        "23": {
-            "recession": null,
-            "mobility": "2",
-            "unit": null,
-            "up": null,
-            "down": null,
-            "right": null,
-            "left": null,
-            "center": null
-        },
-        "85": {"unit": "5", "up": null, "down": null, "right": null, "left": null, "center": null},
-        "84": {"up": "1"}
-    };
-
-    $odontogram = $('.odontogram').odontogram({
-        'format': 'iconTitle,recession,mobility,unit',
-        'json': json,
-        'data': data,
-        'menu-title': 'Pieza #%dataItem%',
-        'enable': true,
-        'icons_dir': '../img/',
-    });
-    console.log($('.odontogram').odontogram.getValue("58"))
-
-</script>
 <!-- Plugins JS Ends-->
 <!-- Theme js-->
 <script src="{{asset('assets/js/script.js')}}"></script>
 <script src="{{asset('assets/js/theme-customizer/customizer.js')}}"></script>
 <!-- login js-->
 <!-- Plugin used-->
+<script>
+    const SwalModal = (icon, title, html) => {
+        Swal.fire({
+            icon,
+            title,
+            html
+        })
+    }
+
+    const SwalConfirm = (icon, title, html, confirmButtonText, method, params, callback) => {
+        Swal.fire({
+            icon,
+            title,
+            html,
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText,
+            reverseButtons: true,
+        }).then(result => {
+            if (result.value) {
+                return livewire.emit(method, params)
+            }
+
+            if (callback) {
+                return livewire.emit(callback)
+            }
+        })
+    }
+
+
+    const SwalAlert = (icon, title, timeout = 2000) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: timeout,
+            onOpen: toast => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon,
+            title
+        })
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                // This hides the address bar:
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+
+        this.livewire.on('mathQuill', data => {
+            var MQ1 = MathQuill.getInterface(2);
+            var problemSpan = document.getElementById(data);
+            MQ1.StaticMath(problemSpan)
+        })
+
+        this.livewire.on('swal:modal', data => {
+            SwalModal(data.icon, data.title, data.text)
+        })
+        this.livewire.on('swal:confirm', data => {
+            SwalConfirm(data.icon, data.title, data.text, data.confirmText, data.method, data.params, data.callback)
+        })
+        this.livewire.on('swal:alert', data => {
+            SwalAlert(data.icon, data.title, data.timeout)
+        })
+        this.livewire.on('redirect', data => {
+            setTimeout(function () {
+                window.location.href = data;
+            }, 2000);
+        })
+        this.livewire.on('redirect:new', data => {
+            let a = document.createElement('a');
+            a.target = '_blank';
+            a.href = data;
+            a.click();
+        })
+        this.livewire.on('notify', data => {
+            $.notify(
+                '<i class="fa fa-bell-o"></i><strong>Loading</strong> ' + data.title, {
+                    type: data.type,
+                    allow_dismiss: true,
+                    delay: 2000,
+                    showProgressbar: true,
+                    timer: 1000,
+                    animate: {
+                        enter: 'animated fadeInDown',
+                        exit: 'animated fadeOutUp'
+                    }
+                });
+
+            // setTimeout(function() {
+            //     notify.update('message', '<i class="fa fa-bell-o"></i><strong>Loading</strong> Inner Data.');
+            // }, 1000);
+        })
+    })
+</script>
 @livewireScripts
 </body>
 </html>

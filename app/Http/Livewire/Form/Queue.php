@@ -15,24 +15,30 @@ class Queue extends Component
 
     public function mount()
     {
-        $this->optionPatient = eloquent_to_options(\App\Models\Pasien::get(), 'id', 'name');
+        $this->optionPatient = eloquent_to_options(\App\Models\Patient::get(), 'id', 'name');
         $this->optionUnit = eloquent_to_options(UnitService::get(), 'id', 'title');
         $this->queue = [
-            'pasien_id' => $this->optionPatient[0]['value'],
-            'unit_service_id' => $this->optionUnit[0]['value'],
+            'patient_id' => 1,
+            'unit_service_id' => 1,
         ];
     }
 
     public function create()
     {
-        $medical = \App\Models\MedicalInitial::create($this->data);
+//        dd($this->queue);
+        $queue=PatientQueue::getQueue($this->queue['unit_service_id']);
         PatientQueue::create([
-            'pasien_id'=>$this->queue['pasien_id'],
+            'patient_id'=>$this->queue['patient_id'],
             'unit_service_id'=>$this->queue['unit_service_id'],
-            'medical_initial_id'=>$medical->id,
             'status'=>1,//1 wait //2 done //3 cancel
-            'queue'=>PatientQueue::getQueue($this->queue['unit_service_id'])
+            'queue'=>$queue
         ]);
+        $this->emit('swal:alert', [
+            'type' => 'success',
+            'title' => 'No antrian ke '.$queue.' pada '. UnitService::find($this->queue['unit_service_id'])->title,
+            'icon' => 'success'
+        ]);
+        $this->emit('redirect', route('admin.dashboard'));
     }
 
     public function render()

@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
-                    <livewire:form.medical-record action="create"/>
+                    <livewire:form.medical-record action="create" :patientId="$patient->id"/>
                 </div>
             </div>
         </div>

@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $gender
  * @property string $religion
  * @property string $job
+ * @property int $bpjs_status
  * @property string $no_bpjs
  * @property string $allergy
  * @property string $created_at
@@ -23,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property MedicalRecord[] $medicalRecords
  * @property PatientQueue[] $patientQueues
  */
-class Pasien extends Model
+class Patient extends Model
 {
     /**
      * The "type" of the auto-incrementing ID.
@@ -35,14 +36,14 @@ class Pasien extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'nik', 'address', 'birth_place', 'birth_date', 'village', 'district', 'gender', 'religion', 'job', 'no_bpjs', 'allergy', 'created_at', 'updated_at'];
+    protected $fillable = ['name', 'nik', 'address', 'birth_place', 'birth_date', 'village', 'district', 'gender', 'religion', 'job', 'bpjs_status', 'no_bpjs', 'allergy', 'created_at', 'updated_at'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function medicalRecords()
     {
-        return $this->hasMany('App\Models\MedicalRecord');
+        return $this->hasMany('App\Models\MedicalRecord')->orderByDesc('id');
     }
 
     /**
@@ -52,15 +53,8 @@ class Pasien extends Model
     {
         return $this->hasMany('App\Models\PatientQueue');
     }
-
-    public static function search($query)
-    {
+    public static function search(){
         return empty($query) ? static::query()
-            : static::where('name', 'like', '%'.$query.'%')
-                ->orWhere('nik', 'like', '%'.$query.'%')
-                ->orWhere('address', 'like', '%'.$query.'%')
-                ->orWhere('village', 'like', '%'.$query.'%')
-                ->orWhere('no_bpjs', 'like', '%'.$query.'%')
-                ->orWhere('gender', 'like', '%'.$query.'%');
+            : static::where('user_id', 'like', '%' . $query . '%');
     }
 }

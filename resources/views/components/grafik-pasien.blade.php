@@ -103,7 +103,7 @@
                     @endforeach
                 ]
             }, {
-                name: 'Pemasukan',
+                name: 'Kunjungan',
                 data: [
                     @foreach($data2 as $d2)
                         {{$d2}},

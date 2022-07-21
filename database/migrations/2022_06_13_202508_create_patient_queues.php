@@ -17,10 +17,10 @@ class CreatePatientQueues extends Migration
             $table->id();
             $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('unit_service_id');
-            $table->unsignedBigInteger('medical_initial_id');
+            $table->integer('queue');
             $table->integer('status');
 
-            $table->foreign('unit_service_id')
+            $table->foreign('patient_id')
                 ->references('id')
                 ->on('patients')
                 ->cascadeOnDelete()
@@ -31,12 +31,12 @@ class CreatePatientQueues extends Migration
                 ->on('unit_services')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
-
-            $table->foreign('medical_initial_id')
-                ->references('id')
-                ->on('medical_initials')
-                ->cascadeOnDelete()
-                ->cascadeOnUpdate();
+//
+//            $table->foreign('medical_initial_id')
+//                ->references('id')
+//                ->on('medical_initials')
+//                ->cascadeOnDelete()
+//                ->cascadeOnUpdate();
 
             $table->timestamps();
         });

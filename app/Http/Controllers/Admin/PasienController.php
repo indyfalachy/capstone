@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Pasien;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class PasienController extends Controller
 {
     public function index(){
-        $pasien=Pasien::class;
+        $pasien=Patient::class;
         return view('pages.pasien.index',compact('pasien'));
     }
     public function create(){

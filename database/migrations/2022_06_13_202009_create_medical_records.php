@@ -19,14 +19,14 @@ class CreateMedicalRecords extends Migration
             $table->unsignedBigInteger('patient_id');
             $table->string('file_location');
             $table->unsignedBigInteger('unit_service_id');
-            $table->text('Subjective')->nullable();
-            $table->text('Objective')->nullable();
-            $table->text('Assessment')->nullable();
-            $table->text('plan')->nullable();
+            $table->text('soap')->nullable();
+
             $table->text('action')->nullable();
             $table->string('type')->nullable();
             $table->unsignedBigInteger('refer')->nullable();
             $table->string('file_addition');
+//            $table->text('odontogram');
+            $table->text('medicine');
 
             $table->foreign('user_id')
                 ->references('id')

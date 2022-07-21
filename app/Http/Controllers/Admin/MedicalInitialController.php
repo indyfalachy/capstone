@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\MedicalInitial;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class MedicalInitialController extends Controller
@@ -24,4 +25,5 @@ class MedicalInitialController extends Controller
     {
         return view('pages.medical-initial.edit');
     }
+
 }

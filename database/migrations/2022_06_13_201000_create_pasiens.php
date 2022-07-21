@@ -17,6 +17,7 @@ class CreatePasiens extends Migration
             $table->id();
             $table->string('name');
             $table->string('nik');
+            $table->string('kk')->nullable();
             $table->text('address')->nullable();
             $table->text('birth_place')->nullable();
             $table->date('birth_date')->nullable();
