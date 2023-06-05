@@ -1,0 +1,32 @@
+php artisan make:migration create_diseases
+php artisan make:migration create_symptoms
+php artisan make:migration create_symptom_of_diseases
+php artisan make:migration create_user_checks
+php artisan make:migration create_user_check_symptoms
+
+diseases
+id
+title
+
+symptoms
+id
+title
+weight
+
+symptom_of_diseases
+id
+disease_id
+symptom_id
+
+
+user_check
+name
+age
+address
+
+user_check_list
+user_check_id
+symptom_id
+certainly
+
+
