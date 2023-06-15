@@ -73,7 +73,7 @@
 <div class="container-fluid sticky-top bg-white shadow-sm">
     <div class="container">
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0">
-            <a href="index.html" class="navbar-brand">
+            <a href="#" class="navbar-brand">
                 <h1 class="m-0 text-uppercase text-primary">
                     <img src="{{ asset('frontpage/img/logo.png') }}" style="width:90px" alt="">
                     Puskesmas Tempurejo</h1>
@@ -83,9 +83,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav ms-auto py-0">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">Tentang</a>
-                    <a href="service.html" class="nav-item nav-link">Diagnosa Online</a>
+                    <a href="#" class="nav-item nav-link active">Home</a>
+                    <a href="#" class="nav-item nav-link">Tentang</a>
+                    <a href="{{ route('diagnosa-online') }}" class="nav-item nav-link">Diagnosa Online</a>
                 </div>
             </div>
         </nav>

@@ -24,6 +24,10 @@ Route::get('/', function () {
     return view('index');
 //    return redirect(\route('admin.dashboard'));
 });
+Route::get('/diagnosa-online', function () {
+    return view('frontpage.index');
+//    return redirect(\route('admin.dashboard'));
+})->name('diagnosa-online');
 Route::get('/dashboard', function () {
     return redirect(\route('admin.dashboard'));
 });
