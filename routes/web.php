@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('frontpage.index');
+    return view('index');
 //    return redirect(\route('admin.dashboard'));
 });
 Route::get('/dashboard', function () {
